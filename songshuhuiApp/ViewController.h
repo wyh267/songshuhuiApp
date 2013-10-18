@@ -7,7 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "YGPSegmentedController.h"
 
-@interface ViewController : UIViewController
+
+@interface ViewController : UIViewController<YGPSegmentedControllerDelegate,UITableViewDataSource,UITableViewDelegate>
 
 @end
