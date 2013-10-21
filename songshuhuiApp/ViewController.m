@@ -7,6 +7,7 @@
 //
 
 #import "ViewController.h"
+#import "sshCollectXML.h"
 
 
 
@@ -55,6 +56,10 @@
     
     [self.view addSubview:_content_table];
     [self.view addSubview:_head];
+    
+    
+    sshCollectXML *xml=[[sshCollectXML alloc]initWithUrl:@"http://songshuhui.net/feed/atom"];
+    [xml downloadXMLContents];
 	// Do any additional setup after loading the view, typically from a nib.
 }
 

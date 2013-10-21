@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>51C01199-C2F2-44D1-9DE0-FEBBFC0B1BF3</string>
+	<key>IDESourceControlProjectName</key>
+	<string>songshuhuiApp</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>027A241B-9DD9-45AD-8CB5-3578D3338E35</key>
+		<string>https://github.com/wyh267/songshuhuiApp.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>songshuhuiApp.xcodeproj/project.xcworkspace</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>027A241B-9DD9-45AD-8CB5-3578D3338E35</key>
+		<string>../..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>https://github.com/wyh267/songshuhuiApp.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>110</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>027A241B-9DD9-45AD-8CB5-3578D3338E35</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>027A241B-9DD9-45AD-8CB5-3578D3338E35</string>
+			<key>IDESourceControlWCCName</key>
+			<string>songshuhuiApp</string>
+		</dict>
+	</array>
+</dict>
+</plist>
