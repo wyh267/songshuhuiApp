@@ -11,21 +11,21 @@
 @interface sshCollectXML : NSObject<NSXMLParserDelegate>
 {
     NSString *_url;
-    NSMutableDictionary *xmlWeather; //package containing the complete response
-    NSMutableDictionary *currentDictionary; //current section being parsed
-    NSString *previousElementName;
-    NSString *elementName;
+    NSMutableArray      *items;
+    NSMutableDictionary *item;
+    NSArray *elementToParse;
     NSMutableString *outstring;
+    BOOL    storingFlag;
     
 }
 
-@property(strong) NSMutableDictionary *xmlWeather; //package containing the complete response
-@property(strong) NSMutableDictionary *currentDictionary; //current section being parsed
-@property(strong) NSString *previousElementName;
-@property(strong) NSString *elementName;
+@property(strong) NSMutableArray      *items; //package containing the complete response
+@property(strong) NSMutableDictionary *item; //current section being parsed
 @property(strong) NSMutableString *outstring;
+@property(strong) NSArray *elementToParse;
 
 -(id)initWithUrl:(NSString *)xml_url;
 -(void)downloadXMLContents;
+-(void)parseXMLString:(NSString *)string;
 
 @end

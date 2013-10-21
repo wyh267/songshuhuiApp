@@ -58,7 +58,7 @@
     [self.view addSubview:_head];
     
     
-    sshCollectXML *xml=[[sshCollectXML alloc]initWithUrl:@"http://songshuhui.net/feed/atom"];
+    sshCollectXML *xml=[[sshCollectXML alloc]initWithUrl:@"http://songshuhui.net/feed/"];
     [xml downloadXMLContents];
 	// Do any additional setup after loading the view, typically from a nib.
 }
