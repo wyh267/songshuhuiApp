@@ -23,9 +23,23 @@
     return self;
 }
 
+
+-(void)setLink:(NSString *)link
+{
+    _link=link;
+}
+
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    
+    detailWebView=[[UIWebView alloc]initWithFrame:CGRectMake(0, 0, 320, 480)];
+    detailWebView.scalesPageToFit = YES;
+    [detailWebView loadRequest:[[NSURLRequest alloc] initWithURL:[NSURL URLWithString:_link]]];
+    
+    [self.view addSubview:detailWebView];
 	// Do any additional setup after loading the view.
 }
 

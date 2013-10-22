@@ -11,6 +11,7 @@
 #import "detailViewController.h"
 
 
+
 @interface ViewController ()
 {
     YGPSegmentedController *_head;
@@ -105,26 +106,16 @@
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     NSLog(@"hi");
+    NSUInteger row = [indexPath row];
     detailViewController *show=[[detailViewController alloc]init];
+    [show setLink:[[my_data objectAtIndex:row] objectForKey:@"link"]];
     [self presentViewController:show animated:YES completion:Nil];
     
 }
 
 
 
-//返回数据
--(void)sshCollectXMLInfoSuccess:(NSMutableArray *)xml_info
-{
-    //NSLog(@"%@",xml_info);
-    for (NSMutableDictionary *i in xml_info) {
-        NSLog(@"title:%@",[i objectForKey:@"title"]);
-        NSLog(@"creator:%@",[i objectForKey:@"creator"]);
-        NSLog(@"description:%@",[i objectForKey:@"description"]);
-        NSLog(@"category:%@",[i objectForKey:@"category"]);
-    }
-    my_data=xml_info;
-    [_content_table reloadData];
-}
+
 
 
 -(void)segmentedViewController:(YGPSegmentedController *)segmentedControl touchedAtIndex:(NSUInteger)index
@@ -140,6 +131,37 @@
         case 1:
         {
             NSLog(@"change to 1");
+            sshCollectPages *page1=[[sshCollectPages alloc]initWithUrl:@"http://songshuhui.net/archives/tag/%E5%8E%9F%E5%88%9B?pagetag=yuanchuang"];
+            [page1 setDelegate:self];
+            [page1 downloadXMLContents];
+            break;
+        }
+            
+        case 2:
+        {
+            NSLog(@"change to 1");
+            sshCollectPages *page1=[[sshCollectPages alloc]initWithUrl:@"http://songshuhui.net/archives/tag/%E6%B4%BB%E5%8A%A8?pagetag=huodong"];
+            [page1 setDelegate:self];
+            [page1 downloadXMLContents];
+            break;
+        }
+            
+        case 3:
+        {
+            NSLog(@"change to 1");
+            sshCollectPages *page1=[[sshCollectPages alloc]initWithUrl:@"http://songshuhui.net/archives/tag/%E8%AF%91%E6%96%87?pagetag=yiwen"];
+            [page1 setDelegate:self];
+            [page1 downloadXMLContents];
+            break;
+        }
+        
+            
+        case 4:
+        {
+            NSLog(@"change to 1");
+            sshCollectPages *page1=[[sshCollectPages alloc]initWithUrl:@"http://songshuhui.net/archives/tag/%E4%B8%93%E9%A2%98?pagetag=zhuanti"];
+            [page1 setDelegate:self];
+            [page1 downloadXMLContents];
             break;
         }
             
@@ -147,5 +169,31 @@
             break;
     }
 }
+
+
+
+//返回数据
+-(void)sshCollectXMLInfoSuccess:(NSMutableArray *)xml_info
+{
+    //NSLog(@"%@",xml_info);
+    for (NSMutableDictionary *i in xml_info) {
+        NSLog(@"title:%@",[i objectForKey:@"title"]);
+        NSLog(@"link:%@",[i objectForKey:@"link"]);
+    }
+    my_data=xml_info;
+    [_content_table reloadData];
+}
+
+-(void)sshCollectPagesInfoSuccess:(NSMutableArray *)xml_info
+{
+    for (NSMutableDictionary *i in xml_info) {
+        NSLog(@"title:%@",[i objectForKey:@"title"]);
+        NSLog(@"link:%@",[i objectForKey:@"link"]);
+        
+    }
+    my_data=xml_info;
+    [_content_table reloadData];
+}
+
 
 @end

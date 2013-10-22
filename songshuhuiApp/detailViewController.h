@@ -9,5 +9,12 @@
 #import <UIKit/UIKit.h>
 
 @interface detailViewController : UIViewController
+{
+    UIWebView   *detailWebView;
+    NSString    *_link;
+}
+
+
+-(void)setLink:(NSString *)link;
 
 @end
