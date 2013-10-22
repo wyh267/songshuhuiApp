@@ -8,8 +8,8 @@
 
 #import <UIKit/UIKit.h>
 #import "YGPSegmentedController.h"
+#import "sshCollectXML.h"
 
-
-@interface ViewController : UIViewController<YGPSegmentedControllerDelegate,UITableViewDataSource,UITableViewDelegate>
+@interface ViewController : UIViewController<YGPSegmentedControllerDelegate,UITableViewDataSource,UITableViewDelegate,sshCollectXMLDelegate>
 
 @end

@@ -23,7 +23,6 @@
 
 
 
-
 -(id)initWithUrl:(NSString *)xml_url
 {
     self=[super init];
@@ -41,12 +40,8 @@
 -(void)downloadXMLContents
 {
     storingFlag=false;
-    elementToParse = [[NSArray alloc] initWithObjects:@"title",@"creator",@"description",@"encoded", nil];
+    elementToParse = [[NSArray alloc] initWithObjects:@"title",@"creator",@"description",@"encoded",@"category",@"link", nil];
     
-    NSURL *url = [NSURL URLWithString:_url];
-    NSURLRequest *request = [NSURLRequest requestWithURL:url];
-    
-    /*
     NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:_url]];
     AFHTTPRequestOperation *operation = [[AFHTTPRequestOperation alloc] initWithRequest:request];
     [operation setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
@@ -57,31 +52,7 @@
         NSLog(@"Failure: %@", error);
     }];
     [operation start];
-    */
     
-    
-    AFXMLRequestOperation *operation =
-    
-    [AFXMLRequestOperation XMLParserRequestOperationWithRequest:request
-                                                        success:^(NSURLRequest *request, NSHTTPURLResponse *response, NSXMLParser *XMLParser) {
-                                                            
-                                                        }
-                                                        failure:^(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error, NSXMLParser *XMLParser) {
-                                                            UIAlertView *av = [[UIAlertView alloc] initWithTitle:@"Error Retrieving Weather"
-                                                                                                         message:[NSString stringWithFormat:@"%@",error]
-                                                                                                        delegate:nil
-                                                                                               cancelButtonTitle:@"OK"
-                                                                                               otherButtonTitles:nil];
-                                                            [av show];
-                                                            //NSLog(@"%@",error);
-                                                            XMLParser.delegate = self;
-                                                            [XMLParser setShouldProcessNamespaces:YES];
-                                                            [XMLParser parse];
-                                                        }];
-    
-
-    [operation start];
-     
     
     
     NSLog(@"Download contents now,please wait....");
@@ -94,10 +65,10 @@
 
 -(void)parseXMLString:(NSString *)string
 {
-    NSString * regex        = @"http://songshuhui\\.net/feed";
-    NSPredicate * pred      = [NSPredicate predicateWithFormat:@"SELF MATCHES %@", regex];
-    BOOL isMatch            = [pred evaluateWithObject:string];
-    NSLog(@"Match:%d",isMatch);
+    NSXMLParser *XMLParser=[[NSXMLParser alloc] initWithData:[string dataUsingEncoding:NSUTF8StringEncoding]];
+    XMLParser.delegate = self;
+    [XMLParser setShouldProcessNamespaces:YES];
+    [XMLParser parse];
 }
 
 
@@ -106,7 +77,6 @@
     
     if ([elementName isEqualToString:@"channel"]) {
         NSLog(@"NodeName:%@",elementName);
-        
         items=[[NSMutableArray alloc]init];
         
     }
@@ -187,13 +157,8 @@
 
 -(void) parserDidEndDocument:(NSXMLParser *)parser
 {
-    //NSLog(@"%@",items);
-    for (NSMutableDictionary *i in items) {
-        NSLog(@"title:%@",[i objectForKey:@"title"]);
-        NSLog(@"creator:%@",[i objectForKey:@"creator"]);
-        NSLog(@"description:%@",[i objectForKey:@"description"]);
-        NSLog(@"encoded:%@",[i objectForKey:@"encoded"]);
-    }
+    NSLog(@"END");
+    [self.delegate sshCollectXMLInfoSuccess:items];
 }
 
 

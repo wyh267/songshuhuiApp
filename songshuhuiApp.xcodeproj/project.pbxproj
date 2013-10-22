@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		E3822D2118166B1400DF4654 /* detailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E3822D2018166B1400DF4654 /* detailViewController.m */; };
+		E3822D2418166D1900DF4654 /* sshCollectPages.m in Sources */ = {isa = PBXBuildFile; fileRef = E3822D2318166D1900DF4654 /* sshCollectPages.m */; };
 		E3EBA1901811324800C3C8B5 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E3EBA18F1811324800C3C8B5 /* Foundation.framework */; };
 		E3EBA1921811324800C3C8B5 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E3EBA1911811324800C3C8B5 /* CoreGraphics.framework */; };
 		E3EBA1941811324800C3C8B5 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E3EBA1931811324800C3C8B5 /* UIKit.framework */; };
@@ -48,6 +50,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		E3822D1F18166B1400DF4654 /* detailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = detailViewController.h; sourceTree = "<group>"; };
+		E3822D2018166B1400DF4654 /* detailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = detailViewController.m; sourceTree = "<group>"; };
+		E3822D2218166D1900DF4654 /* sshCollectPages.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = sshCollectPages.h; sourceTree = "<group>"; };
+		E3822D2318166D1900DF4654 /* sshCollectPages.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = sshCollectPages.m; sourceTree = "<group>"; };
 		E3EBA18C1811324800C3C8B5 /* songshuhuiApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = songshuhuiApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E3EBA18F1811324800C3C8B5 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		E3EBA1911811324800C3C8B5 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -121,6 +127,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		E3822D1E18166AD900DF4654 /* sshUI */ = {
+			isa = PBXGroup;
+			children = (
+				E3822D1F18166B1400DF4654 /* detailViewController.h */,
+				E3822D2018166B1400DF4654 /* detailViewController.m */,
+			);
+			name = sshUI;
+			sourceTree = "<group>";
+		};
 		E3EBA1831811324800C3C8B5 = {
 			isa = PBXGroup;
 			children = (
@@ -154,6 +169,7 @@
 		E3EBA1951811324800C3C8B5 /* songshuhuiApp */ = {
 			isa = PBXGroup;
 			children = (
+				E3822D1E18166AD900DF4654 /* sshUI */,
 				E3EBA1D518113CF000C3C8B5 /* AFNetworking */,
 				E3EBA1D118113CA300C3C8B5 /* songshuhuiLib */,
 				E3EBA1C71811343D00C3C8B5 /* YGPSemgmented */,
@@ -216,6 +232,8 @@
 			children = (
 				E3EBA1D218113CDA00C3C8B5 /* sshCollectXML.h */,
 				E3EBA1D318113CDA00C3C8B5 /* sshCollectXML.m */,
+				E3822D2218166D1900DF4654 /* sshCollectPages.h */,
+				E3822D2318166D1900DF4654 /* sshCollectPages.m */,
 			);
 			name = songshuhuiLib;
 			sourceTree = "<group>";
@@ -346,8 +364,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				E3EBA1EF18113CF000C3C8B5 /* AFURLConnectionOperation.m in Sources */,
+				E3822D2418166D1900DF4654 /* sshCollectPages.m in Sources */,
 				E3EBA1F118113CF000C3C8B5 /* UIImageView+AFNetworking.m in Sources */,
 				E3EBA1CE1811343D00C3C8B5 /* Globle.m in Sources */,
+				E3822D2118166B1400DF4654 /* detailViewController.m in Sources */,
 				E3EBA1A91811324800C3C8B5 /* ViewController.m in Sources */,
 				E3EBA1EE18113CF000C3C8B5 /* AFPropertyListRequestOperation.m in Sources */,
 				E3EBA1A01811324800C3C8B5 /* AppDelegate.m in Sources */,
@@ -578,6 +598,7 @@
 				E3EBA1C31811324800C3C8B5 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		E3EBA1C41811324800C3C8B5 /* Build configuration list for PBXNativeTarget "songshuhuiAppTests" */ = {
 			isa = XCConfigurationList;
@@ -586,6 +607,7 @@
 				E3EBA1C61811324800C3C8B5 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

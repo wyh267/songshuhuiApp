@@ -7,8 +7,8 @@
 //
 
 #import "ViewController.h"
-#import "sshCollectXML.h"
 
+#import "detailViewController.h"
 
 
 @interface ViewController ()
@@ -27,12 +27,12 @@
 {
     [super viewDidLoad];
     
-    my_data=[[NSMutableArray alloc]initWithObjects:@"a",@"b",@"c",nil];
+    my_data=[[NSMutableArray alloc]init];
     
     self.title=@"HOME";
     
     //初始化数据
-    NSArray * TitielArray = [NSArray arrayWithObjects:@"网易", @"新浪", @"腾讯", @"搜狐", @"百度", @"谷歌", @"奇虎",@"阿里",@"火狐",@"天猫", nil];
+    NSArray * TitielArray = [NSArray arrayWithObjects:@"最新", @"原创", @"活动", @"译文", @"专题", nil];
     
     
     
@@ -43,6 +43,7 @@
     _head = [[YGPSegmentedController alloc]initContentTitle:TitielArray
                                                      CGRect:CGRectMake(0, 0, 320, 44)];
     
+    [_head initselectedSegmentIndex];
     [_head setDelegate:self];
     
     
@@ -50,8 +51,6 @@
     
     _content_table.delegate=self;
     [_content_table setDataSource:self];
-   // _content_table.dataSource=self;
-    //[_content_table reloadData];
     
     
     [self.view addSubview:_content_table];
@@ -59,6 +58,7 @@
     
     
     sshCollectXML *xml=[[sshCollectXML alloc]initWithUrl:@"http://songshuhui.net/feed/"];
+    [xml setDelegate:self];
     [xml downloadXMLContents];
 	// Do any additional setup after loading the view, typically from a nib.
 }
@@ -93,7 +93,7 @@
     }
     
     NSUInteger row = [indexPath row];
-    cell.textLabel.text=[my_data objectAtIndex:row];
+    cell.textLabel.text=[[my_data objectAtIndex:row] objectForKey:@"title"];
     
     return cell;
     
@@ -102,5 +102,50 @@
 }
 
 
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    NSLog(@"hi");
+    detailViewController *show=[[detailViewController alloc]init];
+    [self presentViewController:show animated:YES completion:Nil];
+    
+}
+
+
+
+//返回数据
+-(void)sshCollectXMLInfoSuccess:(NSMutableArray *)xml_info
+{
+    //NSLog(@"%@",xml_info);
+    for (NSMutableDictionary *i in xml_info) {
+        NSLog(@"title:%@",[i objectForKey:@"title"]);
+        NSLog(@"creator:%@",[i objectForKey:@"creator"]);
+        NSLog(@"description:%@",[i objectForKey:@"description"]);
+        NSLog(@"category:%@",[i objectForKey:@"category"]);
+    }
+    my_data=xml_info;
+    [_content_table reloadData];
+}
+
+
+-(void)segmentedViewController:(YGPSegmentedController *)segmentedControl touchedAtIndex:(NSUInteger)index
+{
+    switch (index) {
+        case 0:
+        {
+            sshCollectXML *xml=[[sshCollectXML alloc]initWithUrl:@"http://songshuhui.net/feed/"];
+            [xml setDelegate:self];
+            [xml downloadXMLContents];
+            break;
+        }
+        case 1:
+        {
+            NSLog(@"change to 1");
+            break;
+        }
+            
+        default:
+            break;
+    }
+}
 
 @end
